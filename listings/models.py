@@ -10,10 +10,11 @@ class Listing(models.Model):
     title = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
+    state = models.CharField(max_length=200,blank=False)
     zipcode = models.CharField(max_length=200)
     descrption = models.TextField(blank=True)
-    price = models.IntegerField
-    bedrooms = models.IntegerField
+    price = models.IntegerField(blank=False)
+    bedrooms = models.IntegerField()
     bathrooms = models.DecimalField(max_digits=2, decimal_places=1)
     garage = models.IntegerField(default=0)
     sqft = models.IntegerField()
@@ -25,6 +26,7 @@ class Listing(models.Model):
     photo_4 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_5 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_6 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    #dummy = models.FileField(upload_to='files/',blank=True) -if we wanted to upload a file
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
 
